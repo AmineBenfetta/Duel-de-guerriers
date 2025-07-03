@@ -43,14 +43,20 @@ namespace Duel_de_guerrier
         {
             Console.WriteLine($"Nom : {GetNom()}\nHP : {GetPointsDeVie()}\nNombres d'attaques : {GetNbDesAttaque()}");
         }
-        public virtual int Attaquer() 
+        public virtual int Attaquer()
         {
             Random des = new Random();
             int degats = 0;
-            for (int i = 0; i < _nbDesAttaque; i++) 
+            for (int i = 0; i < _nbDesAttaque; i++)
             {
                 degats += des.Next(1, 7);
             }
+            if (_pointsDeVie == 0)
+            {
+                Console.WriteLine($"Attaque impossible, {GetNom()} est mort au combat.");
+                return 0;
+            }
+
             Console.WriteLine($"{GetNom()} inflige {degats} dégats à l'adversaire");
             return degats;
         }
@@ -60,11 +66,7 @@ namespace Duel_de_guerrier
             if (_pointsDeVie < 0)
             {
                 _pointsDeVie = 0;
-            } else if (_pointsDeVie <= 0) 
-            {
-                Console.WriteLine("Game Over..");
-                return;
-            }
+            } 
                 Console.WriteLine($"{GetNom()} à subis {degats} points de dégats.\nPoints de vie restants : {_pointsDeVie}");
         }
     }
