@@ -8,9 +8,9 @@ namespace Duel_de_guerrier
 {
     internal class Guerrier
     {   // attributs
-        private string _nomDuGuerrier;
-        private int _pointsDeVie;
-        private int _nbDesAttaque;
+        protected string _nomDuGuerrier;
+        protected int _pointsDeVie;
+        protected int _nbDesAttaque;
 
         // constructor
         public Guerrier(string nomDuGuerrier, int pointsDeVie, int nbDesAttaque)
@@ -60,7 +60,7 @@ namespace Duel_de_guerrier
             Console.WriteLine($"{GetNom()} inflige {degats} dégats à l'adversaire");
             return degats;
         }
-        public void SubirDegats(int degats)
+        public virtual void SubirDegats(int degats)
         {
             _pointsDeVie -= degats;
             if (_pointsDeVie < 0)
